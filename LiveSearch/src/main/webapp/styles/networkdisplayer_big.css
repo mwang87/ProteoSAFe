@@ -1,0 +1,59 @@
+#networkcontainer {
+    width : 1100px;
+    height : 902px;
+    border-width : 2px;
+    border-style : solid;
+    position : absolute;
+    top : 30px;
+    left: 0px;
+    /*border-radius : 25px;*/
+}
+
+
+#nodelabelsbuttons_div {
+    top : 664px;
+}
+
+#edgelabelsbuttons_div {
+    top : 816px;
+}
+
+#grouplegend_div{
+    left : 950px;
+    top : 694px;
+}
+
+#node_size_div{
+    left : 838px;
+    top : 796px;
+}
+
+
+
+#topcontentwrapper{
+    left : 1102px;
+}
+
+#bottomcontentwrapper{
+    left : 1102px;
+}
+
+
+#alignment_box{
+    top : 611px;
+    left: 991px;
+}
+
+
+#edgecolorsentry_div{
+    left : 122px;
+    top : 837px;
+}
+
+#nodeMS2colorsentry_div{
+    top : 837px;
+}
+
+
+
+

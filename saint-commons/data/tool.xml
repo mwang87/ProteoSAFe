@@ -1,0 +1,53 @@
+<toolset>
+
+<!-- Paths -->
+<pathSet base="inspect">
+	<pathVar  name="inspect.resource"		path="resource" />
+	<toolPath tool="inspect"				path="inspect" />
+</pathSet>
+
+<!-- Value maps -->
+<valueMap name="protease">
+	<mapping key="None" value="0"/>
+	<mapping key="Trypsin" value="1"/>
+	<mapping key="Chymotrypsin" value="2"/>
+	<mapping key="Lys-C" value="3"/>
+</valueMap>
+
+<valueMap name="inspectColumns">
+	<mapping key="Protein" value="3"/>
+	<mapping key="Scan#" value="1"/>
+	<mapping key="Annotation" value="2"/>
+	<mapping key="F-Score" value="14"/>
+</valueMap>
+
+<!-- Data types -->
+<datatype name="trieSeq" convention="common prefix">
+	<file extension="trie"/>
+	<file extension="index" />
+</datatype>
+
+<datatype name="spectrum" convention="suffix set">
+        <file extension="mzxml"/>
+        <file extension="mgf"/>
+        <file extension="dta"/>
+        <file extension="pkl"/>
+</datatype>
+
+<!-- Tools -->
+<tool name="inspect">
+	<require name="config" type="file"/>
+	<require name="sequence" type="folder" datatype="trieSeq"/>
+	<require name="spectrum" type="folder" datatype="spectrum"/>
+	<produce name="result"   type="file" naming="explicit" extension="out"/>
+	<produce name="log"      type="file" naming="explicit" extension="log"/>
+
+	<execution env="binary" argConvention="posix">
+		<arg option="r" pathRef="inspect.resource"/>
+		<arg option="i" valueRef="config"/>
+		<arg option="o" valueRef="result"/>
+		<arg option="e" valueRef="log"/>
+	</execution>
+</tool>
+
+</toolset>

@@ -1,0 +1,9 @@
+#networkcontainer {
+    width : 980px;
+    height : 802px;
+    border-width : 2px;
+    border-style : solid;
+    top : 30px;
+    left: 0px;
+    /*border-radius : 25px;*/
+}

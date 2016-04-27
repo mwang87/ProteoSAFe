@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="LiveSearch" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>LiveSearch</display-name>
+
+	<!-- User account operation servlets -->
+	<servlet>
+		<description>Authenticate user</description>
+		<display-name>AuthenticateUser</display-name>
+		<servlet-name>AuthenticateUser</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.AuthenticateUser</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AuthenticateUser</servlet-name>
+		<url-pattern>/AuthenticateUser</url-pattern>
+	</servlet-mapping>
+
+	<!-- Workflow operation servlets -->
+	<servlet>
+		<description>Instantiate a workflow task</description>
+		<display-name>Instantiate a workflow task</display-name>
+		<servlet-name>InvokeWorkflow</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.InvokeWorkflow</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InvokeWorkflow</servlet-name>
+		<url-pattern>/InvokeTools</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Re-launch a RUNNING workflow task</description>
+		<display-name>Relaunch a workflow task</display-name>
+		<servlet-name>RelaunchWorkflows</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.RelaunchWorkflows</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RelaunchWorkflows</servlet-name>
+		<url-pattern>/RelaunchWorkflows</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Delete a task</description>
+		<display-name>Delete a task</display-name>
+		<servlet-name>DeleteTask</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.DeleteTask</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteTask</servlet-name>
+		<url-pattern>/Delete</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Suspend a RUNNING workflow task</description>
+		<display-name>Suspend a workflow task</display-name>
+		<servlet-name>SuspendTask</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.SuspendTask</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SuspendTask</servlet-name>
+		<url-pattern>/Suspend</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Restart a SUSPENDED task</description>
+		<display-name>Restart a workflow task</display-name>
+		<servlet-name>RestartTask</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.RestartTask</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RestartTask</servlet-name>
+		<url-pattern>/Restart</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Notify the server of task completion</description>
+		<display-name>Notify task completion</display-name>
+		<servlet-name>NotifyCompletion</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.NotifyCompletion</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NotifyCompletion</servlet-name>
+		<url-pattern>/NotifyCompletion</url-pattern>
+	</servlet-mapping>
+
+	<!-- Workflow data stage-in/stage-out servlets -->
+	<servlet>
+		<description>Upload task result</description>
+		<display-name>Upload task result</display-name>
+		<servlet-name>UploadTaskResult</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.UploadTaskResult</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UploadTaskResult</servlet-name>
+		<url-pattern>/Upload</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Download task resources</description>
+		<display-name>Download task resources</display-name>
+		<servlet-name>DownloadTaskResources</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.DownloadTaskResources</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownloadTaskResources</servlet-name>
+		<url-pattern>/Download</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Download a file of a task</description>
+		<display-name>Download file of a taskF</display-name>
+		<servlet-name>DownloadTaskFile</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.DownloadTaskFile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownloadTaskFile</servlet-name>
+		<url-pattern>/download/task/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- Workflow specification download servlets -->
+	<servlet>
+		<description>Download the flow/binding specification for a task</description>
+		<display-name>Download workflow specification</display-name>
+		<servlet-name>DownloadFlowSpec</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.DownloadFlowSpec</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownloadFlowSpec</servlet-name>
+		<url-pattern>/DownloadFlowSpec</url-pattern>
+	</servlet-mapping>
+
+	<!-- Workflow input form resource download servlets -->
+	<servlet>
+		<description>Workflow interface specification file download service</description>
+		<display-name>Workflow interface specification download</display-name>
+		<servlet-name>DownloadWorkflowInterface</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.DownloadWorkflowInterface</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownloadWorkflowInterface</servlet-name>
+		<url-pattern>/DownloadWorkflowInterface</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Interface module file download service</description>
+		<display-name>Interface module file download</display-name>
+		<servlet-name>DownloadModuleInterface</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.DownloadModuleInterface</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownloadModuleInterface</servlet-name>
+		<url-pattern>/DownloadModuleInterface</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Map filenames selected in the UI</description>
+		<display-name>Filename mapper service</display-name>
+		<servlet-name>MapFilenames</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.MapFilenames</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MapFilenames</servlet-name>
+		<url-pattern>/MapFilenames</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Query species from the NCBI taxonomy ontology</description>
+		<display-name>Species query service</display-name>
+		<servlet-name>QuerySpecies</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.QuerySpecies</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>QuerySpecies</servlet-name>
+		<url-pattern>/QuerySpecies</url-pattern>
+	</servlet-mapping>
+
+	<!-- Workflow result view resource download servlets -->
+	<servlet>
+		<description>Result view block details download service</description>
+		<display-name>Result view block details download</display-name>
+		<servlet-name>DownloadBlock</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.result.DownloadBlock</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownloadBlock</servlet-name>
+		<url-pattern>/DownloadBlock</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Result view file download service</description>
+		<display-name>Result view file download</display-name>
+		<servlet-name>DownloadResultFile</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.result.DownloadResultFile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownloadResultFile</servlet-name>
+		<url-pattern>/DownloadResultFile</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Result view package download service</description>
+		<display-name>Result view package download</display-name>
+		<servlet-name>DownloadResult</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.result.DownloadResult</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownloadResult</servlet-name>
+		<url-pattern>/DownloadResult</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Result view SQLite database file query service</description>
+		<display-name>Result view SQLite database file query</display-name>
+		<servlet-name>QueryResult</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.result.QueryResult</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>QueryResult</servlet-name>
+		<url-pattern>/QueryResult</url-pattern>
+	</servlet-mapping>
+
+	<!-- MassIVE dataset operation servlets -->
+	<servlet>
+		<description>Make a MassIVE dataset public</description>
+		<display-name>Make dataset public</display-name>
+		<servlet-name>PublishDataset</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.dataset.DatasetManager</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PublishDataset</servlet-name>
+		<url-pattern>/PublishDataset</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Update a MassIVE dataset's metadata</description>
+		<display-name>Update dataset metadata</display-name>
+		<servlet-name>UpdateDataset</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.dataset.UpdateDataset</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateDataset</servlet-name>
+		<url-pattern>/UpdateDataset</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Generate ProteomeXchange XML for a MassIVE dataset</description>
+		<display-name>Generate ProteomeXchange XML</display-name>
+		<servlet-name>GenerateProteomeXchangeXML</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.dataset.DatasetPublisher</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GenerateProteomeXchangeXML</servlet-name>
+		<url-pattern>/GenerateProteomeXchangeXML</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Publication management service interface</description>
+		<display-name>Publication management service</display-name>
+		<servlet-name>ManagePublications</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.publication.PublicationManager</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ManagePublications</servlet-name>
+		<url-pattern>/ManagePublications</url-pattern>
+	</servlet-mapping>
+
+	<!-- Web server file/resource management servlets -->
+	<servlet>
+		<description>File management service interface</description>
+		<display-name>File management service</display-name>
+		<servlet-name>ManageFiles</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.ManageFiles</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ManageFiles</servlet-name>
+		<url-pattern>/ManageFiles</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>File upload queuing service interface</description>
+		<display-name>File upload queuing service</display-name>
+		<servlet-name>QueueUploads</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.QueueUploads</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>QueueUploads</servlet-name>
+		<url-pattern>/QueueUploads</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Simple File Manager</description>
+		<display-name>Simple File Manager</display-name>
+		<servlet-name>SimpleUploadManager</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.SimpleUploadManager</servlet-class>
+    </servlet>
+    <servlet-mapping>
+		<servlet-name>SimpleUploadManager</servlet-name>
+		<url-pattern>/SimpleUploadManager</url-pattern>
+    </servlet-mapping>
+
+	<servlet>
+		<description>Parameter file management service interface</description>
+		<display-name>Parameter file management service</display-name>
+		<servlet-name>ManageParameters</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.ManageParameters</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ManageParameters</servlet-name>
+		<url-pattern>/ManageParameters</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>File sharing management service interface</description>
+		<display-name>File sharing management service</display-name>
+		<servlet-name>ManageSharing</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.ManageSharing</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ManageSharing</servlet-name>
+		<url-pattern>/ManageSharing</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>System resource mapping download service</description>
+		<display-name>System resource mapping download</display-name>
+		<servlet-name>DownloadResourceMapping</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.parameter.ResourceManager</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownloadResourceMapping</servlet-name>
+		<url-pattern>/DownloadResourceMapping</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>System resource file update service</description>
+		<display-name>System resource file update</display-name>
+		<servlet-name>UpdateResource</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.result.UpdateResource</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateResource</servlet-name>
+		<url-pattern>/UpdateResource</url-pattern>
+	</servlet-mapping>
+
+	<!-- Administrator function servlets -->
+	<servlet>
+		<description>Task label directory cleanup service interface</description>
+		<display-name>Task label directory cleanup service</display-name>
+		<servlet-name>CleanupLabel</servlet-name>
+		<servlet-class>edu.ucsd.liveadmin.batch.CleanupLabel</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CleanupLabel</servlet-name>
+		<url-pattern>/user/CleanupLabel</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Amino acid masses file generation service interface</description>
+		<display-name>Amino acid masses file generation service</display-name>
+		<servlet-name>GenerateMassesFiles</servlet-name>
+		<servlet-class>edu.ucsd.liveadmin.batch.GenerateMassesFiles</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GenerateMassesFiles</servlet-name>
+		<url-pattern>/user/GenerateMassesFiles</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Stale task checking service interface</description>
+		<display-name>Stale task checking service</display-name>
+		<servlet-name>FindStaleTasks</servlet-name>
+		<servlet-class>edu.ucsd.liveadmin.batch.FindStaleTasks</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FindStaleTasks</servlet-name>
+		<url-pattern>/admin/FindStaleTasks</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>General system health test</description>
+		<display-name>General system health test</display-name>
+		<servlet-name>TestSystemHealth</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.TestSystemHealth</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TestSystemHealth</servlet-name>
+		<url-pattern>/admin/TestSystemHealth</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Synchronize user space</description>
+		<display-name>Synchronize user space service</display-name>
+		<servlet-name>SyncUserSpace</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.SyncUserSpace</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SyncUserSpace</servlet-name>
+		<url-pattern>/user/SyncUserSpace</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Query task information</description>
+		<display-name>Query task information</display-name>
+		<servlet-name>QueryTaskInfo</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.QueryTaskInfo</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>QueryTaskInfo</servlet-name>
+		<url-pattern>/QueryTaskInfo</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Update system properties</description>
+		<display-name>UpdateProperties</display-name>
+		<servlet-name>UpdateProperties</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.UpdateProperties</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateProperties</servlet-name>
+		<url-pattern>/UpdateProperties</url-pattern>
+	</servlet-mapping>
+
+	<!-- Result view processing and visualization plugin servlets -->
+	<servlet>
+		<description>Download an annotated PSM image</description>
+   		<display-name>PSM Image</display-name>
+   		<servlet-name>DownloadPSMImage</servlet-name>
+   		<servlet-class>edu.ucsd.livesearch.result.plugin.DownloadPSMImage</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownloadPSMImage</servlet-name>
+		<url-pattern>/DownloadPSMImage</url-pattern>
+	</servlet-mapping>
+
+	<!-- MassIVE knowledge base servlets -->
+	<servlet>
+		<description>Massive Servlet</description>
+		<display-name>Massive Servlet</display-name>
+		<servlet-name>MassiveServlet</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.MassiveServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MassiveServlet</servlet-name>
+		<url-pattern>/MassiveServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Continuous ID Servlet</description>
+		<display-name>Continuous ID Servlet</display-name>
+		<servlet-name>ContinuousIDServlet</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.ContinuousIDServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ContinuousIDServlet</servlet-name>
+		<url-pattern>/ContinuousIDServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Spectrum Info Servlet</description>
+		<display-name>Spectrum Info Servlet</display-name>
+		<servlet-name>SpectrumCommentServlet</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.SpectrumCommentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SpectrumCommentServlet</servlet-name>
+		<url-pattern>/SpectrumCommentServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>Spectral Library Servlet</description>
+		<display-name>Spectral Library Servlet</display-name>
+		<servlet-name>LibraryServlet</servlet-name>
+		<servlet-class>edu.ucsd.livesearch.servlet.LibraryServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LibraryServlet</servlet-name>
+		<url-pattern>/LibraryServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+        <description>Continuous ID Rating Servlet</description>
+        <display-name>Continuous ID Rating Servlet</display-name>
+        <servlet-name>ContinuousIDRatingServlet</servlet-name>
+        <servlet-class>edu.ucsd.livesearch.servlet.ContinuousIDRatingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ContinuousIDRatingServlet</servlet-name>
+        <url-pattern>/ContinuousIDRatingServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>Continuous ID Rating Summary Servlet</description>
+        <display-name>Continuous ID Rating Summary Servlet</display-name>
+        <servlet-name>ContinuousIDRatingSummaryServlet</servlet-name>
+        <servlet-class>edu.ucsd.livesearch.servlet.ContinuousIDRatingSummaryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ContinuousIDRatingSummaryServlet</servlet-name>
+        <url-pattern>/ContinuousIDRatingSummaryServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>Query User Tasks</description>
+        <display-name>Query User Tasks</display-name>
+        <servlet-name>QueryTaskList</servlet-name>
+        <servlet-class>edu.ucsd.livesearch.servlet.QueryTaskList</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>QueryTaskList</servlet-name>
+        <url-pattern>/QueryTaskList</url-pattern>
+    </servlet-mapping>
+
+	<servlet>
+        <description>Result Comparison Session</description>
+        <display-name>Result Comparison Session</display-name>
+        <servlet-name>ResultCompareSession</servlet-name>
+        <servlet-class>edu.ucsd.livesearch.servlet.ResultComparisonServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResultCompareSession</servlet-name>
+        <url-pattern>/ResultCompareSession</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>Dataset Annotation Servlet</description>
+        <display-name>Dataset Annotation Servlet</display-name>
+        <servlet-name>DatasetAnnotation</servlet-name>
+        <servlet-class>edu.ucsd.livesearch.servlet.DatasetAnnotationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DatasetAnnotation</servlet-name>
+        <url-pattern>/DatasetAnnotation</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>Splash Servlet</description>
+        <display-name>Splash Servlet</display-name>
+        <servlet-name>SplashServlet</servlet-name>
+        <servlet-class>edu.ucsd.livesearch.servlet.SplashServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SplashServlet</servlet-name>
+        <url-pattern>/SplashServlet</url-pattern>
+    </servlet-mapping>
+
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Protected Pages</web-resource-name>
+			<url-pattern>/user/*</url-pattern>
+		</web-resource-collection>
+		<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+
+	<listener>
+		<listener-class>edu.ucsd.livesearch.daemon.DaemonListener</listener-class>
+	</listener>
+
+	<!-- Session listener -->
+	<listener>
+		<listener-class>
+			edu.ucsd.livesearch.util.SessionListener
+		</listener-class>
+	</listener>
+</web-app>

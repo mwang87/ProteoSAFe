@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="LiveFlow" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>
+	LiveFlow</display-name>
+	<servlet>
+		<description>Launch a workflow instance for a task</description>
+		<display-name>LaunchWorkflow</display-name>
+		<servlet-name>LaunchWorkflow</servlet-name>
+		<servlet-class>edu.ucsd.liveflow.servlet.LaunchWorkflow</servlet-class>
+	</servlet>
+
+	<servlet>
+		<description>Purge a workflow instance for a task</description>
+		<display-name>PurgeWorkflow</display-name>
+		<servlet-name>PurgeWorkflow</servlet-name>
+		<servlet-class>edu.ucsd.liveflow.servlet.PurgeWorkflow</servlet-class>
+	</servlet>
+
+	<servlet>
+		<description>Query the number of running workflow instances</description>
+		<display-name>QueryNumWorkflows</display-name>
+		<servlet-name>QueryNumWorkflows</servlet-name>
+		<servlet-class>edu.ucsd.liveflow.servlet.QueryNumWorkflows</servlet-class>
+	</servlet>
+
+	<servlet>
+		<description>Query the number of ready nodes</description>
+		<display-name>QueryNumReadyNodes</display-name>
+		<servlet-name>QueryNumReadyNodes</servlet-name>
+		<servlet-class>edu.ucsd.liveflow.servlet.QueryNumReadyNodes</servlet-class>
+	</servlet>
+
+	<servlet>
+		<description>Query list of ready nodes</description>
+		<display-name>QueryReadyNodes</display-name>
+		<servlet-name>QueryReadyNodes</servlet-name>
+		<servlet-class>edu.ucsd.liveflow.servlet.QueryReadyNodes</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>LaunchWorkflow</servlet-name>
+		<url-pattern>/LaunchWorkflow</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>PurgeWorkflow</servlet-name>
+		<url-pattern>/PurgeWorkflow</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>QueryNumWorkflows</servlet-name>
+		<url-pattern>/QueryNumWorkflows</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>QueryNumReadyNodes</servlet-name>
+		<url-pattern>/QueryNumReadyNodes</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>QueryReadyNodes</servlet-name>
+		<url-pattern>/QueryReadyNodes</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	<listener>
+		<listener-class>edu.ucsd.liveflow.DaemonListener</listener-class>
+	</listener>
+</web-app>

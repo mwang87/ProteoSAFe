@@ -1,0 +1,37 @@
+<Database CreatedBy="BuildMS2DB.c">
+<Gene ExonCount="3" Chromosome="simple" ForwardFlag="1">
+  <Exon Index="0" Start="239" End="1113">
+    <ExonSequence Length="291">MIITQTSHCYMTSLGILFLINILPGTTGQGESRRQEPGDFVKQDIGGLSPKHAPDIPDDSTDNITIFTRILDRLLDGYDNRLRPGLGDAVTEVKTDIYVTSFGPVSDTDMEYTIDVFFRQTWHDERLKFDGPMKILPLNNLLASKIWTPDTFFHNGKKSVAHNMTTPNKLLRLVDNGTLPYTMRLTIHAECPMHLEDFPMDVHACPLKFGSYAYTTAEVVYSWTLGKNKSVEVAQDGSRLNQYDLLGHVVGTEIIRSSTGEYVVMTTHFHLKRKIGYFVIQTYLPCIMTVI</ExonSequence>
+  </Exon>
+  <Exon Index="1" Start="1138" End="1483">
+    <ExonSequence Length="114">SQVSFWLNRVKEAMAPKFGVTTVLTMTTLSISARNSLPKVAYATAMDWFIAVCYAFVFSALIEFATVNYFTKRSWAWEGKKVPEALEMKKKTPAAPAKKTSTTFNIVGTTYPIN</ExonSequence>
+    <LinkFrom Index="0" AA="L" />
+  </Exon>
+  <Exon Index="2" Start="1508" End="1768">
+    <ExonSequence Length="86">AKDTEFSTISKGAAPSASSTPTIIASPKATYVQDSPTETKTYNSVSKVDKISRIIFPVLFAIFNLVYWATYVNRESAIKGMIRKQX</ExonSequence>
+    <LinkFrom Index="1" AA="L" />
+  </Exon>
+  <CrossReference Database="Natalie" ID="SimpleGene1">
+    <CRExons Index="0, 1, 2"/>
+  </CrossReference>
+</Gene>
+
+<Gene ExonCount="3" Chromosome="simple" ForwardFlag="0">
+  <Exon Index="0" Start="109" End="118">
+    <ExonSequence Length="3">FSL</ExonSequence>
+  </Exon>
+  <Exon Index="1" Start="94" End="104">
+    <ExonSequence Length="3">LSP</ExonSequence>
+    <LinkFrom Index="0" />
+  </Exon>
+  <Exon Index="2" Start="77" End="89">
+    <ExonSequence Length="3">SRS</ExonSequence>
+    <LinkFrom Index="1" AA="V" />
+  </Exon>
+  <CrossReference Database="Natalie" ID="SimpleGene3">
+    <CRExons Index="2, 1, 0"/>
+  </CrossReference>
+</Gene>
+
+
+</Database>

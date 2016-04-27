@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ccms</groupId>
+	<artifactId>LiveFlow</artifactId>
+	<name>Workflow Subsystem for CCMS LiveSearch Web Application</name>
+	<packaging>war</packaging>
+	<version>1.2.8</version>
+	<properties>
+		<my.type></my.type>
+		<my.name></my.name>
+		<tomcat.url></tomcat.url>
+		<tomcat.server></tomcat.server>
+	</properties>
+	<repositories>
+		<repository>
+			<id>internal</id>
+			<name>Maven 2 Internal Repository</name>
+			<url>http://ccms-internal.ucsd.edu/maven2</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>maven2-repository.download.java.net</id>
+			<url>http://download.java.net/maven/2</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>Codehaus Snapshots</id>
+			<url>https://nexus.codehaus.org/content/groups/snapshots-group/</url>
+		</pluginRepository>
+	</pluginRepositories>
+	<build>
+		<finalName>LiveFlow</finalName>
+		<plugins>
+			<plugin>
+				<inherited>true</inherited>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<!--
+			<plugin>
+        		<artifactId>maven-eclipse-plugin</artifactId>
+        		<configuration>
+          			<downloadSources>true</downloadSources>
+          			<wtpversion>2.0</wtpversion>
+        		</configuration>
+			</plugin>
+			-->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<version>1.0-SNAPSHOT</version>
+				<configuration>
+					<url>${tomcat.url}</url>
+					<!--
+						If using something other than the default username and password for the
+						tomcat manager, specify them in ~/.m2/settings.xml and reference the
+						entry here.
+					-->
+					<server>${tomcat.server}</server>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestFile>src/main/webapp/META-INF/MANIFEST.MF</manifestFile>
+					</archive>
+					<webResources>
+						<resource>
+							<directory>${basedir}/src/main/webapp</directory>
+							<filtering>true</filtering>
+							<includes>
+								<include>WEB-INF/web.xml</include>
+							</includes>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+		</plugins>
+		<!-- to enable maven profile -->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+	<dependencies>
+		<!-- Apache Commons -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>RELEASE</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>RELEASE</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>RELEASE</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Apache Geronimo dependencies -->
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-servlet_2.5_spec</artifactId>
+			<version>RELEASE</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-jsp_2.1_spec</artifactId>
+			<version>RELEASE</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Other Apache dependencies -->
+		<dependency>
+    		<groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpcore</artifactId>
+		    <version>4.3.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+    		<groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpclient</artifactId>
+    		<version>4.3.4</version>
+			<scope>provided</scope>    		
+		</dependency> 
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.3.4</version>
+			<scope>provided</scope>
+		</dependency>		
+		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+			<version>2.9.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Saint dependencies -->
+		<dependency>
+			<groupId>saint</groupId>
+			<artifactId>saint-commons</artifactId>
+			<version>1.2.8</version>
+		</dependency>
+
+		<!-- CCMS dependencies -->
+		<dependency>
+			<groupId>dapper</groupId>
+			<artifactId>dapper-base</artifactId>
+			<version>0.97</version>
+		</dependency>
+		<dependency>
+			<groupId>shared</groupId>
+			<artifactId>sst-base</artifactId>
+			<version>1.11</version>
+		</dependency>
+		<dependency>
+			<groupId>shared</groupId>
+			<artifactId>sst-commons</artifactId>
+			<version>1.11</version>
+		</dependency>
+		<dependency>
+			<groupId>shared</groupId>
+			<artifactId>sst-net</artifactId>
+			<version>1.11</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.jung</groupId>
+			<artifactId>jung-algorithms</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jung</groupId>
+			<artifactId>jung-api</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jung</groupId>
+			<artifactId>jung-graph-impl</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+
+		<!-- Other dependencies -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+</project>

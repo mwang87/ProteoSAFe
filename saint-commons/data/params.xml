@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><parameters>
+<parameter name="tolerance.PM_tolerance">2</parameter>
+<parameter name="ptm.mods">1</parameter>
+<parameter name="FPR.FPR">1.0</parameter>
+<parameter name="FDR.FDR">0.01</parameter>
+<parameter name="tool">INSPECT</parameter>
+<parameter name="cysteine_protease.cysteine">c57</parameter>
+<parameter name="cysteine_protease.protease">Trypsin</parameter>
+<parameter name="instrument.instrument">ESI-ION-TRAP</parameter>
+<parameter name="seq_on_server">f.toju/CommonContaminants.fasta;f.toju/HumanLens_sp060124.fasta;</parameter>
+<parameter name="spec_on_server">f.toju/93yo_sol_31_32.mgf;</parameter>
+<parameter name="filter.filter">FDR</parameter>
+<parameter name="db.DB">None</parameter>
+<parameter name="email">t3huang@ucsd.edu</parameter>
+<parameter name="uuid">1D878FDF-8131-0001-C17F-110CFAFBEB50</parameter>
+<parameter name="tolerance.Ion_tolerance">0.5</parameter>
+</parameters>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+	This file does not define the layout of the input form page, only its
+	content and validator logic.
+	
+	Adding this superfluous text as a test of the updated Git repository.
+-->
+<interface>
+	<parameters>
+		<!-- Parameters not belonging to any group -->
+		<parameter name="tool"/>
+		<parameter name="spec_on_server">
+			<processor type="spectrum"/>
+		</parameter>
+		<parameter name="desc" label="Description">
+			<validator type="length" maximum="100"/>
+		</parameter>
+		<parameter name="protocol"/>
+		<parameter name="seq_on_server"/>
+		<parameter name="email" label="Email me at">
+			<validator type="email"/>
+		</parameter>
+		<parameter name="uuid"/>
+		
+		<!-- Parameter groups requiring processing -->
+		<parameterGroup name="Default.msc">
+			<parameter name="msc">
+				<processor type="msc"/>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup name="Default.instrument">
+			<parameter name="instrument" label="Instrument">
+				<validator type="set">
+					<option value="ESI-ION-TRAP"/>
+					<option value="QTOF"/>
+					<option value="FT-HYBRID"/>
+				</validator>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup name="Default.cysteine_protease">
+			<parameter name="cysteine" label="Cysteine protecting group">
+				<validator type="set">
+					<option value="c57"/>
+					<option value="c58"/>
+					<option value="c99"/>
+					<option value="None"/>
+				</validator>
+			</parameter>
+			<parameter name="protease" label="Protease">
+				<validator type="set">
+					<option value="Trypsin"/>
+					<option value="Chymotrypsin"/>
+					<option value="Lys-C"/>
+					<option value="None"/>
+				</validator>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup name="Default.tolerance">
+			<parameter name="PM_tolerance" default="2"
+				label="Parent mass tolerance">
+				<validator type="float" minimum="0" maximum="2.5"/>
+			</parameter>
+			<parameter name="Ion_tolerance" default="0.5" label="Ion tolerance">
+				<validator type="float" minimumExclusive="0" maximum="1"/>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup name="Default.ptm">
+			<parameter name="mods" default="1"
+				label="Maximum number of PTMs permitted in a single peptide">
+				<validator type="integer" minimum="0" maximum="3"/>
+			</parameter>
+			<parameter name="custom_PTM"/>
+		</parameterGroup>
+		<parameterGroup name="Default.filter">
+			<parameter name="filter" label="Filter">
+				<validator type="set">
+					<option value="FDR"/>
+					<option value="FPR"/>
+					<option value="ModFDR"/>
+				</validator>
+				<processor type="filter"/>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup name="Default.FDR">
+			<parameter name="FDR" default="0.01">
+				<validator type="float" minimum="0" maximum="1"/>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup name="Default.FPR">
+			<parameter name="FPR" default="10e-9">
+				<validator type="float" minimum="0" maximum="1"/>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup name="Default.ModFDR">
+			<parameter name="ModFDR" default="0.01">
+				<validator type="float" minimum="0" maximum="1"/>
+			</parameter>
+		</parameterGroup>
+		
+		<!-- Parameter groups not requiring any processing -->
+		<parameterGroup name="Default.ptm_top"/>
+		<parameterGroup name="Default.ptm_bot"/>
+		<parameterGroup name="Default.db">
+			<parameter name="DB"/>
+			<parameter name="contaminants"/>
+		</parameterGroup>
+		
+		<!-- Parameter processors affecting multiple parameters -->
+		<processors>
+			<processor type="sequence"/>
+			<processor type="ptm"/>
+		</processors>
+	</parameters>
+</interface>

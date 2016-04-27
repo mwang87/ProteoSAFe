@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="LiveGrid" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>LiveGrid</display-name>
+	<servlet>
+		<description>Passively receive task information</description>
+		<display-name>ReceiveTaskInfo</display-name>	
+		<servlet-name>ReceiveTaskInfo</servlet-name>
+		<servlet-class>edu.ucsd.livegrid.servlet.ReceiveTaskInfo</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		Register a grid account for a user</description>
+		<display-name>RegisterGridAccount</display-name>
+		<servlet-name>RegisterGridAccount</servlet-name>
+		<servlet-class>edu.ucsd.livegrid.servlet.RegisterGridAccount</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Query the list of supported grids</description>
+		<display-name>QueryTargetGrids</display-name>
+		<servlet-name>QueryTargetGrids</servlet-name>
+		<servlet-class>edu.ucsd.livegrid.servlet.QueryTargetGrids</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ReceiveTaskInfo</servlet-name>
+		<url-pattern>/ReceiveTaskInfo</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegisterGridAccount</servlet-name>
+		<url-pattern>/RegisterGridAccount</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>QueryTargetGrids</servlet-name>
+		<url-pattern>/QueryTargetGrids</url-pattern>
+	</servlet-mapping>
+	<listener>
+		<listener-class>
+			edu.ucsd.livegrid.servlet.DaemonListener
+		</listener-class>
+	</listener>
+</web-app>
